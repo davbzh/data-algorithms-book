@@ -207,7 +207,7 @@ bag
       array: -2.4087682254187612
 |multinomial
 mparsian@Mahmouds-MacBook:~/zmp/github/data-algorithms-book/src/main/java/org/dataalgorithms/machinelearning/naivebayes/diabetes# 
-
+````
 
 
 Output from PredictDiabetes Run
@@ -245,6 +245,7 @@ To check the accuracy of model, we run the training data against the built model
 (note that the model is built by the same training data). A simple test class
 ````TestAccuracyOfModel```` is used to check the accuracy. A shell script 
 ````run_check_accuracy_on_yarn.sh```` is used to perform this test.
+
 
 
 ````

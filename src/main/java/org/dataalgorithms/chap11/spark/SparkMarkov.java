@@ -5,10 +5,12 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.io.Serializable;
 import java.util.Iterator;
-
+//
+import java.io.Serializable;
+//
 import scala.Tuple2;
+//
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.JavaSparkContext;
@@ -16,8 +18,9 @@ import org.apache.spark.api.java.function.PairFunction;
 import org.apache.spark.api.java.function.Function2;
 import org.apache.spark.api.java.function.Function;
 import org.apache.spark.api.java.function.PairFlatMapFunction;
+//
 import org.apache.commons.lang.StringUtils;
-
+//
 import org.dataalgorithms.util.DateUtil;
 
 /**
@@ -78,6 +81,26 @@ public class SparkMarkov implements Serializable {
       }
       return list;
    }
+   
+    static String getElapsedTime(long daysDiff) {
+        if (daysDiff < 30) {
+            return "S"; // small
+        } else if (daysDiff < 60) {
+            return "M"; // medium
+        } else {
+            return "L"; // large
+        }
+    }  
+    
+    static String getAmountRange(int priorAmount, int amount) {
+        if (priorAmount < 0.9 * amount) {
+            return "L"; // significantly less than
+        } else if (priorAmount < 1.1 * amount) {
+            return "E"; // more or less same
+        } else {
+            return "G"; // significantly greater than
+        }
+    }
 
    /**
     * @param list : List<Tuple2<Date,Amount>>
@@ -93,7 +116,7 @@ public class SparkMarkov implements Serializable {
       Tuple2<Long,Integer> prior = list.get(0);
       for (int i = 1; i < list.size(); i++) {
          Tuple2<Long,Integer> current = list.get(i);
-
+         //
          long priorDate = prior._1;
          long date = current._1;
          // one day = 24*60*60*1000 = 86400000 milliseconds
@@ -101,31 +124,11 @@ public class SparkMarkov implements Serializable {
 
          int priorAmount = prior._2;
          int amount = current._2;
-         //int amountDiff = amount - priorAmount;
-
-         String dd = null;
-         if (daysDiff < 30){
-            dd = "S";
-         }
-         else if (daysDiff < 60){
-            dd = "M";
-         }
-         else {
-           dd = "L";
-         }
-         
-         String ad = null;
-         if (priorAmount < 0.9 * amount) {
-            ad = "L";
-         }
-         else if (priorAmount < 1.1 * amount) {
-            ad = "E";
-         }
-         else {
-           ad = "G";
-         }
-         
-         String element = dd + ad;
+         //
+         String elapsedTime = getElapsedTime(daysDiff);
+         String amountRange = getAmountRange(priorAmount, amount);
+         //
+         String element = elapsedTime + amountRange;
          sequence.add(element);
          prior = current; 
       }

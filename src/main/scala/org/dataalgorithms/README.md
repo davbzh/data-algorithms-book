@@ -3,7 +3,8 @@
 Scala Spark Solutions
 =====================
 * This is the home for Scala/Spark solutions to Data Algorithms
-* Started providing Scala/Spark solutions to chapters included in Data Algorithms book
+* Started providing Scala/Spark solutions to chapters included 
+  in Data Algorithms book
 
 Chapter                             |  Title                                          |
 ----------------------------------- | ----------------------------------------------- | 
@@ -16,7 +17,17 @@ Chapter                             |  Title                                    
 [Chapter 08](./chap08/scala/)       |  Find Common Friends                            |
 [Chapter 09](./chap09/scala/)       |  Friend Recommendation: recommed friends        |
 [Chapter 10](./chap10/scala/)       |  Movie Recommendation: recommed movies          |
-...                                 |  ...                                            |
+[Chapter 11](./chap11/scala/)       |  Markov algorithm: smart email marketing        |
+[Chapter 12](./chap12/scala/)       |  Kmeans Example                                 |
+[Chapter 13](./chap13/scala/)       |  kNN algorithm                                  |
+[Chapter 14](./chap14/scala/)       |  Naive Bayes Classifier                         |
+[Chapter 16](./chap16/scala/)       |  Counting and Listing Triangles in a Graph      |
+[Chapter 17](./chap17/scala/)       |  Kmer Counting                                  |
+[Chapter 22](./chap22/scala/)       |  Ttest                                          |
+[Chapter 23](./chap23/scala/)       |  All vs. All Correlation                        |
+[Chapter 24](./chap24/scala/)       |  DNA Base Counting                              |
+[Chapter 26](./chap26/scala/)       |  Gene Aggregation                               |
+[Chapter 28](./chap28/scala/)       |  Monoid and MapReduce                           |
 
 Credit and Thank you!
 =====================
